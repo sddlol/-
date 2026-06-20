@@ -259,7 +259,7 @@ def massscan(target, ports, rate):
     cur.execute("CREATE TABLE IF NOT EXISTS seen (ip TEXT, port INTEGER, PRIMARY KEY (ip, port))")
     conn.commit()
 
-    cmd = ["masscan", target, "-p", ports, "--rate", str(rate), "--open", "-oG", "-"]
+    cmd = ["masscan", target, "-p", ports, "--rate", str(rate), "--open", "--exclude 255.255.255.255", "-oG", "-"]
     log(f"[*] masscan: {' '.join(cmd)}")
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
 
