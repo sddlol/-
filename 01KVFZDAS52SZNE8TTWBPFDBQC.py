@@ -263,7 +263,9 @@ def massscan(target, ports, rate):
     log(f"[*] masscan: {' '.join(cmd)}")
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
 
-    pattern = re.compile(r"Host:\s+(\S+)\s+.*Ports:\s+(\d+)/open")
+    pattern = re.compile(
+        r"Host:\s*([0-9\.]+).*?Ports:\s*(\d+)/open"
+    )
     targets = []
     for line in proc.stdout:
         line = line.strip()
